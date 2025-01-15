@@ -1,65 +1,56 @@
 -- Active: 1736516947094@@127.0.0.1@3306@store_management
 -- Active: 1736516947094@@127.0.0.1@3306@store_management
 -- Active: 1736516947094@@127.0.0.1@3306@qlttnv
-CREATE DATABASE IF NOT EXISTS store_management;
+create database if not exists store_management;
 
-USE store_management;
+use store_management;
 
-CREATE TABLE product (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
+create table if not exists product
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    name        VARCHAR(255)   NOT NULL,
     description TEXT,
-    price DECIMAL(10, 2) NULL,
-    stock INT
+    price       DECIMAL(10, 2) NULL,
+    stock       INT
 );
 
-INSERT INTO
-    store_management.product (
-        name,
-        description,
-        price,
-        stock
-    )
-VALUES (
-        'Apple',
-        'Fresh apple',
-        1.5,
-        100
-    );
+insert into product (name, description, price, stock)
+values ('Apple', 'Fresh apple', 1.5, 100);
 
-INSERT INTO
-    store_management.product
-VALUES (
-        2,
-        "Grape",
-        "Fresh grape",
-        1,
-        1000
-    );
+insert into product
+values (2, 'Grape', 'Fresh grape', 1, 1000);
 
-INSERT INTO store_management.product (name) VALUES ("Egg");
+insert into product (name)
+values ('Egg');
 
 -- cap nhat du lieu
-UPDATE product SET name = "hh" WHERE id = 1;
+update product
+set name = 'hh'
+where id = 1;
+
 
 -- SET SQL_SAFE_UPDATE = 0;
-
-UPDATE product SET name = "hh2";
-
+update product
+set name = 'hh2';
 -- SET SQL_SAFE_UPDATE = 1;
 
-ALTER TABLE product ADD barcode VARCHAR(255) DEFAULT NULL;
+alter table product
+    add barcode varchar(255) default null;
 
-ALTER TABLE product ADD warranty INTEGER DEFAULT 6;
+alter table product
+    add warranty integer default 6;
 
-DELETE FROM product WHERE price = 1000;
+delete
+from product
+where price = 1000;
 
 -- SET SQL_SAFE_UPDATE = 0;
-DELETE FROM product;
+delete
+from product;
 -- SET SQL_SAFE_UPDATE = 1;
 
-DROP TABLE product;
+drop table product;
 
-DROP DATABASE IF EXISTS product_management;
+drop database if exists store_management;
 
-DROP DATABASE product_management;
+drop database store_management;
